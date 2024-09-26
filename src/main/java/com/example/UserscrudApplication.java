@@ -12,12 +12,12 @@ import com.fasterxml.jackson.databind.type.ArrayType;
 public class UserscrudApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(UserscrudApplication.class, args);
+//		SpringApplication.run(UserscrudApplication.class, args);
 		
 		
 		ConfigurableApplicationContext context = SpringApplication.run(UserscrudApplication.class, args); 
 		
-		context.getBean(Post.class);
+//		context.getBean(Post.class);
 		
 	}
 

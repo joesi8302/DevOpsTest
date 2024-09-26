@@ -10,7 +10,7 @@ import com.example.userscrud.entity.User;
 import com.example.userscrud.service.UserService;
 
 @RestController
-@RequestMapping(path="/users", params="version=2", produces="application/json")
+@RequestMapping(path="/asd", params="version=2", produces="application/json")
 public class UserControllerV2 {
 	
 private UserService userService;

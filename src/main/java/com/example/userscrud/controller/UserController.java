@@ -27,8 +27,10 @@ import lombok.AllArgsConstructor;
 @RestController
 @RequestMapping("/users")
 public class UserController {
-	
+	@Autowired
 	private UserService userService;
+
+	@Autowired
 	private PostService postService;
 	
 	public UserController(UserService userService, PostService postService) {
@@ -38,8 +40,10 @@ public class UserController {
 	
 	
 	@GetMapping("")
-	public List<User> getAllUsers(){
-		return userService.getAllUsers();
+	public ResponseEntity<List<User>> getAllUsers(){
+		List<User> users = userService.getAllUsers();
+		System.out.println("Users:" + users.toString());
+		return new ResponseEntity<>(userService.getAllUsers(), HttpStatus.FOUND);
 	}
 	
 	@GetMapping("/{email}")
