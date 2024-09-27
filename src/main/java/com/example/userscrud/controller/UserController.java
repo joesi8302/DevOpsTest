@@ -51,9 +51,15 @@ public class UserController {
 		return userService.getUser(email);
 	}
 	
-	@DeleteMapping("/{email}")
-	public void deleteUser(@PathVariable String email) {
-		userService.deleteUser(email);
+	@DeleteMapping("/{name}")
+	public ResponseEntity<String> deleteUser(@PathVariable String name) {
+
+		if(userService.deleteUser(name)){
+			return new ResponseEntity<>("User has been deleted", HttpStatus.OK);
+		}
+		else{
+			return new ResponseEntity<String>("Cannot delete, there are more than 1 user with the same name", HttpStatus.NOT_ACCEPTABLE);
+		}
 	}
 	
 	@PostMapping("")

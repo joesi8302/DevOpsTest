@@ -43,9 +43,18 @@ public class UserServiceImpl implements UserService {
 	}
 
 	@Override
-	public void deleteUser(String email) {
-		User user = userRepository.findByEmailAddress(email);
-		userRepository.delete(user);
+	public boolean deleteUser(String name) {
+
+		if(userRepository.getUserNameCount(name) > 1){
+			return false;
+		}
+		else{
+			User user = userRepository.findByName(name);
+			userRepository.delete(user);
+
+		}
+		return true;
+
 	}
 
 }

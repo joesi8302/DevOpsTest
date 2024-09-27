@@ -10,6 +10,15 @@ public interface UserRepository extends JpaRepository<User, Long> {
 	@Query(value = "SELECT * FROM user WHERE email = ?1", nativeQuery = true)
 	  User findByEmailAddress(String emailAddress);
 
+	@Query(value = "SELECT * FROM user WHERE name = ?name", nativeQuery = true)
+	User findByName(String name);
+
 	@Query(value = "DELETE FROM user WHERE email = :email", nativeQuery = true)
 	User deleteByEmail(String email);
+
+	@Query(value = "SELECT COUNT(*) FROM user WHERE name = :name", nativeQuery = true)
+	Integer getUserNameCount(String name);
+
+	@Query(value = "DELETE FROM user WHERE name = :name", nativeQuery = true)
+	User deleteByName(String name);
 }
